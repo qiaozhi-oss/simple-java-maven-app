@@ -16,6 +16,13 @@ pipeline {
             steps {
                 sh 'mvn -Dmaven.test.failure.ignore=true install'
             }
+            post {
+                success {
+                    echo "build success"
+                    echo `mvn help:evaluate -Dexpression=project.name | grep "^[^\[]"`
+                    echo `mvn help:evaluate -Dexpression=project.version | grep "^[^\[]"`
+                }
+            }
         }
     }
 }
