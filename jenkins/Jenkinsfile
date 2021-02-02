@@ -38,6 +38,7 @@ pipeline {
                 }
             }
         }
+
         stage ('Runtime') {
             steps{
                 sh './jenkins/scripts/deliver.sh'
