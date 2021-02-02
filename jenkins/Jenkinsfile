@@ -7,18 +7,14 @@ pipeline {
     stages {
         stage ('Initialize') {
             steps {
-                sh '''
-                    echo "PATH = ${PATH}"
-                    echo "M2_HOME = ${M2_HOME}"
-                '''
+                echo "PATH = ${PATH}"
+                echo "MAVEN_HOME = ${MAVEN_HOME}"
             }
         }
 
         stage ('Build') {
             steps {
-                sh '''
                 echo 'This is a minimal pipeline.'
-                '''
             }
         }
     }
