@@ -17,9 +17,20 @@ pipeline {
             }
         }
 
+        stage ('Clean') {
+            steps {
+                sh 'mvn clean'
+            }
+            post {
+                success {
+                    echo "#######################Build Success!#######################"
+                }
+            }
+        }
+
         stage ('Build') {
             steps {
-                sh 'mvn -Dmaven.test.failure.ignore=true install'
+                sh 'mvn install'
             }
             post {
                 success {
