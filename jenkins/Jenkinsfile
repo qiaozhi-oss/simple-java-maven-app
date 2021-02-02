@@ -19,8 +19,10 @@ pipeline {
             post {
                 success {
                     echo "build success"
+                    sh '''
                     NAME=`mvn help:evaluate -Dexpression=project.name | grep "^[^\[]"`
                     VERSION=`mvn help:evaluate -Dexpression=project.version | grep "^[^\[]"`
+                    '''
                     echo "${NAME}-${VERSION}"
                 }
             }
