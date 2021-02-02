@@ -10,6 +10,11 @@ pipeline {
                 echo "PATH = ${PATH}"
                 echo "MAVEN_HOME = ${MAVEN_HOME}"
             }
+            post {
+                success {
+                    echo "#######################Initialize Success!#######################"
+                }
+            }
         }
 
         stage ('Build') {
@@ -18,12 +23,17 @@ pipeline {
             }
             post {
                 success {
-                    sh '''
-                        NAME=`mvn help:evaluate -Dexpression=project.name | grep "^[^\[]"`
-                        echo ${NAME}
-                        VERSION=`mvn help:evaluate -Dexpression=project.version | grep "^[^\[]"`
-                        echo ${VERSION}
-                    '''
+                    echo "#######################Build Success!#######################"
+                }
+            }
+        }
+        stage ('Runtime') {
+            steps{
+                sh './jenkins/scripts/deliver.sh'
+            }
+            post {
+                success {
+                    echo "#######################Application Started!#######################"
                 }
             }
         }
