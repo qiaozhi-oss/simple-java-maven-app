@@ -18,7 +18,7 @@ pipeline {
             }
             post {
                 success {
-                   sh RESULT=$(mvn help:evaluate -Dexpression=project.version | grep "^[^\[]")
+                   sh VERSION=`mvn help:evaluate -Dexpression=project.version | grep "^[^\[]"`
                 }
             }
         }
