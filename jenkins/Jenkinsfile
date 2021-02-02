@@ -18,10 +18,12 @@ pipeline {
             }
             post {
                 success {
-                    NAME=`mvn help:evaluate -Dexpression=project.name | grep "^[^\[]"`
-                    echo ${NAME}
-                    VERSION=`mvn help:evaluate -Dexpression=project.version | grep "^[^\[]"`
-                    echo ${VERSION}
+                    sh '''
+                        NAME=`mvn help:evaluate -Dexpression=project.name | grep "^[^\[]"`
+                        echo ${NAME}
+                        VERSION=`mvn help:evaluate -Dexpression=project.version | grep "^[^\[]"`
+                        echo ${VERSION}
+                    '''
                 }
             }
         }
