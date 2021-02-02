@@ -18,7 +18,11 @@ pipeline {
             }
             post {
                 success {
-                   sh './jenkins/scripts/deliver.sh'
+                   sh '''
+                       RESULT=$(mvn help:evaluate -Dexpression=project.version | grep "^[^\[]")
+                       echo $RESULT
+                   '''
+
                 }
             }
         }
