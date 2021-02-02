@@ -3,6 +3,6 @@
 NAME=`mvn help:evaluate -Dexpression=project.name | grep "^[^\[]"`
 VERSION=`mvn help:evaluate -Dexpression=project.version | grep "^[^\[]"`
 #打印
-echo ${NAME}-${VERSION}
+echo "Path : ./target/${NAME}-${VERSION}.jar"
 #运行jar包
 java -jar ./target/${NAME}-${VERSION}.jar
