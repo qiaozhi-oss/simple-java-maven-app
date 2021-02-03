@@ -5,4 +5,4 @@ VERSION=`mvn help:evaluate -Dexpression=project.version | grep "^[^\[]"`
 #打印
 echo "Path : ./target/${NAME}-${VERSION}.jar"
 #运行jar包
-java -jar ./target/${NAME}-${VERSION}.jar
+nohup java -jar ./target/${NAME}-${VERSION}.jar &
