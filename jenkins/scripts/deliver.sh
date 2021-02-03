@@ -6,4 +6,4 @@ VERSION=`mvn help:evaluate -Dexpression=project.version | grep "^[^\[]"`
 echo "Path : ./target/${NAME}-${VERSION}.jar"
 #运行jar包
 BUILD_ID=DONTKILLME
-java -jar ./target/${NAME}-${VERSION}.jar &
+java -jar ./target/${NAME}-${VERSION}.jar
