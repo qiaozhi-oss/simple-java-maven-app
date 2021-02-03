@@ -28,13 +28,13 @@ pipeline {
             }
         }
 
-        stage ('Build') {
+        stage ('Install') {
             steps {
                 sh 'mvn install'
             }
             post {
                 success {
-                    echo "#######################Build Success!#######################"
+                    echo "#######################Install Success!#######################"
                 }
             }
         }
