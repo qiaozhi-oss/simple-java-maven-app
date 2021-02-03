@@ -16,9 +16,9 @@ then
   echo "${NAME}-${VERSION}.jar Killed"
 fi
 
-#设定BUILD_ID防止被jenkins杀掉
-#BUILD_ID=dontKillMe
 #运行jar包
+#设定BUILD_ID防止被jenkins杀掉
+BUILD_ID=1234
 #后台jar包启动,并将日志输出到application.log 文件
 nohup java -Xms800m -Xmx800m -XX:MetaspaceSize=256m -XX:MaxMetaspaceSize=512m -XX:MaxNewSize=512m -jar ./target/${NAME}-${VERSION}.jar 1>/var/lib/jenkins/workspace/application.log 2>&1 &
 

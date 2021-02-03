@@ -41,7 +41,6 @@ pipeline {
 
         stage ('Runtime') {
             steps{
-                sh BUILD_ID=DONTKILLME
                 sh './jenkins/scripts/deliver.sh'
             }
             post {
