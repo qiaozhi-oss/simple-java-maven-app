@@ -20,7 +20,7 @@ fi
 #BUILD_ID=dontKillMe
 #运行jar包
 #后台jar包启动,并将日志输出到application.log 文件
-BUILD_ID=dontKillMe nohup java -Xms800m -Xmx800m -XX:MetaspaceSize=256m -XX:MaxMetaspaceSize=512m -XX:MaxNewSize=512m -jar ./target/${NAME}-${VERSION}.jar 1>/var/lib/jenkins/workspace/application.log 2>&1 &
+nohup java -Xms800m -Xmx800m -XX:MetaspaceSize=256m -XX:MaxMetaspaceSize=512m -XX:MaxNewSize=512m -jar ./target/${NAME}-${VERSION}.jar 1>/var/lib/jenkins/workspace/application.log 2>&1 &
 
 #打印启动成功日志
 echo "${NAME}-${VERSION}.jar Start successful"
