@@ -7,3 +7,4 @@ echo "Path : ./target/${NAME}-${VERSION}.jar"
 #运行jar包
 BUILD_ID=dontKillMe
 nohup java -jar ./target/${NAME}-${VERSION}.jar &
+echo "${NAME}-${VERSION}.jar Start successful"
