@@ -18,7 +18,7 @@ fi
 
 #运行jar包
 #设定BUILD_ID防止被jenkins杀掉
-BUILD_ID=dontKillMe
+export BUILD_ID=dontKillMe
 #后台jar包启动
 nohup java -jar ./target/${NAME}-${VERSION}.jar &
 
