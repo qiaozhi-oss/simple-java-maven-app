@@ -9,7 +9,7 @@ pid=`ps -ef | grep ${NAME}-${VERSION}.jar|grep -v grep|awk '{print $2}'`
 if [ -n "$pid" ]
 then
   kill -9 $pid
-  echo "${NAME}-${VERSION}.jar Killed"
+  echo "${NAME}-${VERSION}.jar pid = ${pid} has been Killed"
 fi
 
 
