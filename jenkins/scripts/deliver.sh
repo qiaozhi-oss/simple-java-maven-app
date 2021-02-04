@@ -16,7 +16,8 @@ fi
 #设置JENKINS_SERVER_COOKIE：由于pipeline退出时候会kill掉其子进程，遵循规则——kill process only in case if JENKINS_NODE_COOKIE and BUILD_ID are unchanged
 echo "before modification:  BUILD_ID = ${BUILD_ID}"
 echo "before modification:  JENKINS_SERVER_COOKIE = ${JENKINS_SERVER_COOKIE}"
-JENKINS_SERVER_COOKIE=durable-keepmealive
+BUILD_ID=keepmealive
+JENKINS_SERVER_COOKIE=keepmealive
 echo "after modification:   BUILD_ID = ${BUILD_ID}"
 echo "after modification:   JENKINS_SERVER_COOKIE = ${JENKINS_SERVER_COOKIE}"
 
