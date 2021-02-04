@@ -14,12 +14,10 @@ fi
 
 
 #设置JENKINS_SERVER_COOKIE：由于pipeline退出时候会kill掉其子进程，遵循规则——kill process only in case if JENKINS_NODE_COOKIE and BUILD_ID are unchanged
-echo "before modification:  BUILD_ID = ${BUILD_ID}"
-echo "before modification:  JENKINS_SERVER_COOKIE = ${JENKINS_SERVER_COOKIE}"
+echo "before modification:  BUILD_ID = ${BUILD_ID}  JENKINS_SERVER_COOKIE = ${JENKINS_SERVER_COOKIE}"
 BUILD_ID=keepmealive
 JENKINS_SERVER_COOKIE=keepmealive
-echo "after modification:   BUILD_ID = ${BUILD_ID}"
-echo "after modification:   JENKINS_SERVER_COOKIE = ${JENKINS_SERVER_COOKIE}"
+echo "after modification:   BUILD_ID = ${BUILD_ID}  JENKINS_SERVER_COOKIE = ${JENKINS_SERVER_COOKIE}"
 
 #后台jar包启动,并将日志输出到application.log 文件
 nohup java -Xms800m -Xmx800m -XX:MetaspaceSize=256m -XX:MaxMetaspaceSize=512m -XX:MaxNewSize=512m -jar ./target/${NAME}-${VERSION}.jar 1>/var/lib/jenkins/workspace/application.log 2>&1 &
