@@ -16,11 +16,14 @@ then
   echo "${NAME}-${VERSION}.jar Killed"
 fi
 
-#运行jar包
-#设定BUILD_ID防止被jenkins杀掉
-echo $BUILD_ID
-echo $JENKINS_SERVER_COOKIE
+
+#设置JENKINS_SERVER_COOKIE，由于pipeline退出时候会kill掉其子进程，遵循规则： kill process only in case if JENKINS_NODE_COOKIE and BUILD_ID are unchanged
+echo "before modification:  BUILD_ID = ${BUILD_ID}"
+echo "before modification:  JENKINS_SERVER_COOKIE = ${JENKINS_SERVER_COOKIE}"
 JENKINS_SERVER_COOKIE = durable-keepmealive
+echo "after modification:   BUILD_ID = ${BUILD_ID}"
+echo "after modification:   JENKINS_SERVER_COOKIE = ${JENKINS_SERVER_COOKIE}"
+
 #后台jar包启动,并将日志输出到application.log 文件
 nohup java -Xms800m -Xmx800m -XX:MetaspaceSize=256m -XX:MaxMetaspaceSize=512m -XX:MaxNewSize=512m -jar ./target/${NAME}-${VERSION}.jar 1>/var/lib/jenkins/workspace/${NAME}-${VERSION}/application.log 2>&1 &
 
