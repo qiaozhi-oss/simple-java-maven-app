@@ -21,7 +21,7 @@ echo "after modification:   BUILD_ID = ${BUILD_ID}"
 echo "after modification:   JENKINS_SERVER_COOKIE = ${JENKINS_SERVER_COOKIE}"
 
 #后台jar包启动,并将日志输出到application.log 文件
-nohup java -Xms800m -Xmx800m -XX:MetaspaceSize=256m -XX:MaxMetaspaceSize=512m -XX:MaxNewSize=512m -jar ./target/${NAME}-${VERSION}.jar 1>/var/lib/jenkins/workspace/${NAME}-${VERSION}/application.log 2>&1 &
+nohup java -Xms800m -Xmx800m -XX:MetaspaceSize=256m -XX:MaxMetaspaceSize=512m -XX:MaxNewSize=512m -jar ./target/${NAME}-${VERSION}.jar 1>/var/lib/jenkins/workspace/${NAME}/application.log 2>&1 &
 
 #打印启动成功日志
 echo "${NAME}-${VERSION}.jar Start successful"
