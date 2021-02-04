@@ -1,14 +1,10 @@
 #!/usr/bin/env bash
-#摘取pom文件project.name,project.version
+#设置变量：摘取pom文件project.name,project.version
 NAME=`mvn help:evaluate -Dexpression=project.artifactId | grep "^[^\[]"`
 VERSION=`mvn help:evaluate -Dexpression=project.version | grep "^[^\[]"`
+echo "JAR NAME : ${NAME}-${VERSION}.jar"
 
-#打印jar包路径日志
-echo "JAR Path : ./target/${NAME}-${VERSION}.jar"
-
-#杀死已存在进程
-# if [ -n "$xxx" ]用于判断xxx变量非空
-# fi为if语句的结束,相当于end if
+#杀死已存在进程：if [ -n "$xxx" ]用于判断xxx变量非空  fi为if语句的结束,相当于end if
 pid=`ps -ef | grep ${NAME}-${VERSION}.jar|grep -v grep|awk '{print $2}'`
 if [ -n "$pid" ]
 then
@@ -17,7 +13,7 @@ then
 fi
 
 
-#设置JENKINS_SERVER_COOKIE，由于pipeline退出时候会kill掉其子进程，遵循规则： kill process only in case if JENKINS_NODE_COOKIE and BUILD_ID are unchanged
+#设置JENKINS_SERVER_COOKIE：由于pipeline退出时候会kill掉其子进程，遵循规则——kill process only in case if JENKINS_NODE_COOKIE and BUILD_ID are unchanged
 echo "before modification:  BUILD_ID = ${BUILD_ID}"
 echo "before modification:  JENKINS_SERVER_COOKIE = ${JENKINS_SERVER_COOKIE}"
 JENKINS_SERVER_COOKIE = durable-keepmealive
